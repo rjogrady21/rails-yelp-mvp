@@ -1,0 +1,15 @@
+<%= simple_form_for @restaurant do |f| %>
+  <% if @restaurant.errors.any? %>
+    <div id="error-explanation">
+      <ul>
+      <% @restaurant.erros.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.input :name, label: 'Restaurant Name', placeholder: "McDonald's" %>
+  <%= f.input :address, placeholder: "1 Hyde Park" %>
+  <%= f.input :category, placeholder: "Chinese", hint: '(One of Chinese, Italian, Japanese, Belgian or French)', case_insensitive: true %>
+  <%= f.submit %>
+<% end %>

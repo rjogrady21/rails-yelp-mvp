@@ -1,2 +1,14 @@
-<h1>Restaurants#show</h1>
-<p>Find me in app/views/restaurants/show.html.erb</p>
+<h1> <%= @restaurant.name %> </h1>
+<p><em><%= @restaurant.category.capitalize %></em></p>
+<p><%= @restaurant.address %>, <%= @restaurant.phone_number %></p>
+<ul>
+  <% @restaurant.reviews.each do |review| %>
+    <p><b><%= review.content %></b></p>
+    <p><em><%= review.rating %></em></p>
+  <% end %>
+</ul>
+
+<%= link_to "Edit", edit_restaurant_path %>
+<%= link_to "Delete", restaurants_path, method: :destroy %>
+<%= link_to "Add Review", new_restaurant_review_path(@restaurant) %>
+<%= link_to "Back", restaurants_path %>
